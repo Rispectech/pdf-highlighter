@@ -32,29 +32,26 @@ const LoadPDF = () => {
 
      // Function to draw rectangle on a specific page and line
      const drawRectangleOnLine = (pageNumber, lineNumber) => {
-      const page = pages[pageNumber - 1] // Page numbers are 1-indexed
-      if (!page) return // If page doesn't exist, do nothing
+      const page = pages[pageNumber - 1] 
+      if (!page) return //
 
       const { width, height } = page.getSize()
-      const lineHeight = 12 // Approximate line height, adjust as needed
-      const marginTop = 50 // Adjust top margin as needed
-      const rectangleHeight = 15 // Height of the rectangle
+      const lineHeight = 12 
+      const marginTop = 50 
+      const rectangleHeight = 15
 
-      // Calculate y position based on line number
       const y = height - marginTop - lineNumber * lineHeight
 
-      // Draw rectangle
       page.drawRectangle({
-        x: 50, // Left margin
-        y: y - rectangleHeight / 2, // Center the rectangle on the line
-        width: width - 100, // Width of the rectangle (leaving margins on both sides)
+        x: 50,
+        y: y - rectangleHeight / 2,
+        width: width - 100,
         height: rectangleHeight,
-        color: rgb(1, 0.8, 0), // Yellow color
+        color: rgb(1, 0.8, 0),
         opacity: 0.5,
       })
     }
 
-    // Example: Draw rectangles on different pages and lines
     drawRectangleOnLine(1, 5) // Page 1, Line 5
     drawRectangleOnLine(2, 10) // Page 2, Line 10
 
