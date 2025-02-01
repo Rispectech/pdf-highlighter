@@ -18,7 +18,7 @@ const LoadPDF = ({ url, rectArray }) => {
     const firstPage = pages[0];
 
     // Get the width and height of the first page
-    const { width, height } = firstPage.getSize();
+    // const { width, height } = firstPage.getSize();
     // firstPage.drawText("This text was added with JavaScript!", {
     //   x: 5,
     //   y: height / 2 + 300,
@@ -69,10 +69,7 @@ const LoadPDF = ({ url, rectArray }) => {
           title="test-frame"
           src={pdfInfo}
           type="application/pdf"
-          style={{
-            height: "100vh",
-            width: "100vw",
-          }}
+          className="w-screen h-screen"
         />
       }
     </>
