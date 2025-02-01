@@ -1,5 +1,5 @@
 import { LoadPdfProps } from "@/type/global";
-import { degrees, drawRectangle, PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import { PDFDocument, rgb } from "pdf-lib";
 import { useEffect, useState } from "react";
 
 const LoadPDF = ({ url, rectArray }: LoadPdfProps) => {
@@ -13,10 +13,10 @@ const LoadPDF = ({ url, rectArray }: LoadPdfProps) => {
     const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
-    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    // const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
     const pages = pdfDoc.getPages();
-    const firstPage = pages[0];
+    // const firstPage = pages[0];
 
     // Get the width and height of the first page
     // const { width, height } = firstPage.getSize();
