@@ -1,8 +1,9 @@
+import { LoadPdfProps } from "@/type/global";
 import { degrees, drawRectangle, PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import { useEffect, useState } from "react";
 
-const LoadPDF = ({ url, rectArray }) => {
-  const [pdfInfo, setPdfInfo] = useState([]);
+const LoadPDF = ({ url, rectArray }: LoadPdfProps) => {
+  const [pdfInfo, setPdfInfo] = useState<string>("");
 
   useEffect(() => {
     modifyPdf();
@@ -29,7 +30,13 @@ const LoadPDF = ({ url, rectArray }) => {
     // });
 
     // Function to draw rectangle on a specific page and line
-    const drawRectangleOnLine = (pageNumber, lineNumber, rectHeight, color, opacity) => {
+    const drawRectangleOnLine = (
+      pageNumber: number,
+      lineNumber: number,
+      rectHeight: number,
+      color: { red: number; green: number; blue: number },
+      opacity: number
+    ) => {
       const page = pages[pageNumber - 1];
       if (!page) return; //
 
@@ -62,18 +69,7 @@ const LoadPDF = ({ url, rectArray }) => {
     setPdfInfo(docUrl);
   };
 
-  return (
-    <>
-      {
-        <iframe
-          title="test-frame"
-          src={pdfInfo}
-          type="application/pdf"
-          className="w-screen h-screen"
-        />
-      }
-    </>
-  );
+  return <>{<iframe title="test-frame" src={pdfInfo} className="w-screen h-screen" />}</>;
 };
 
 export default LoadPDF;

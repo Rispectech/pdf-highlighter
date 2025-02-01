@@ -1,4 +1,3 @@
-import React from "react";
 import LoadPDF from "./components/LoadPdf";
 
 const data = {
